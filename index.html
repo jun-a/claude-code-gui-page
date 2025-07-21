@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ccgui - A GUI for Claude Code</title>
+    <style>
+        :root {
+            --primary-color: #D97706;
+            --secondary-color: #CC5500;
+            --text-color: #2c3e50;
+            --background-light: #f8f9fa;
+            --background-white: #ffffff;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .header-logo .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--background-white);
+            border-radius: 16px;
+            margin-top: 40px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+        
+        .hero .claude-logo {
+             transform: scale(1.2);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin: 20px 0 10px;
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .install-command {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px 25px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            text-align: center;
+            max-width: 450px;
+            margin: 0 auto;
+            font-size: 1.1em;
+            white-space: nowrap;
+        }
+        .install-command .token-command { color: #ff79c6; }
+        .install-command .token-keyword { color: #8be9fd; }
+        .install-command .token-package { color: #f1fa8c; }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--background-white);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: #6c757d;
+        }
+
+        /* Claude Logo Styles */
+        .claude-logo { position: relative; display: inline-block; }
+        .logo-circle { position: absolute; border-radius: 50%; }
+        .standard .claude-logo { width: 80px; height: 80px; }
+        .standard .logo-circle:nth-child(1) { width: 80px; height: 80px; top: 0; left: 0; background: #D97706; opacity: 0.85; }
+        .standard .logo-circle:nth-child(2) { width: 48px; height: 48px; top: 16px; left: 24px; background: #CC5500; opacity: 0.95; }
+        .standard .logo-circle:nth-child(3) { width: 16px; height: 16px; top: 32px; left: 40px; background: #F4F4F4; }
+        
+        .horizontal-layout .claude-logo { width: 40px; height: 40px; }
+        .horizontal-layout .logo-circle:nth-child(1) { width: 40px; height: 40px; top: 0; left: 0; background: #D97706; opacity: 0.85; }
+        .horizontal-layout .logo-circle:nth-child(2) { width: 24px; height: 24px; top: 8px; left: 12px; background: #CC5500; opacity: 0.95; }
+        .horizontal-layout .logo-circle:nth-child(3) { width: 8px; height: 8px; top: 16px; left: 20px; background: #F4F4F4; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <a href="#" class="header-logo">
+                <div class="horizontal-layout">
+                    <div class="claude-logo">
+                        <div class="logo-circle"></div>
+                        <div class="logo-circle"></div>
+                        <div class="logo-circle"></div>
+                    </div>
+                </div>
+                <span class="logo-text">ccgui</span>
+            </a>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="standard">
+                    <div class="claude-logo">
+                        <div class="logo-circle"></div>
+                        <div class="logo-circle"></div>
+                        <div class="logo-circle"></div>
+                    </div>
+                </div>
+                <h1>ccgui</h1>
+                <p>A powerful graphical interface for Claude Code. Manage projects, track usage, and leverage Vibe Coding.</p>
+                <div class="install-command">
+                    <code><span class="token-command">npm</span> <span class="token-keyword">install -g</span> <span class="token-package">claude-code-gui</span></code>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="folder-open"></i></div>
+                    <h3>CC Projects</h3>
+                    <p>Browse and manage Claude Code projects. Start chats from sessions, resume work, and search past sessions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="line-chart"></i></div>
+                    <h3>Usage Analytics</h3>
+                    <p>Track API usage and costs. Get statistics by day, model, and project.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="zap"></i></div>
+                    <h3>CC Vibe Coding</h3>
+                    <p>YOLO mode Spec-Driven Development. Track your project in real-time with an automated workflow.</p>
+                </div>
+                 <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="server-cog"></i></div>
+                    <h3>MCP Manager</h3>
+                    <p>Manage and configure Model Context Protocol servers. Enhance integration with external tools.</p>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 ccgui Developers. Licensed under the MIT License.</p>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
