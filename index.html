@@ -138,6 +138,51 @@
             margin-bottom: 10px;
         }
 
+        /* Screenshots Section */
+        .screenshots {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-link {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            background: var(--background-white);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tab-link:hover {
+            background-color: var(--background-light);
+            border-color: var(--primary-color);
+        }
+
+        .tab-link.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .tab-content img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -216,6 +261,19 @@
                 </div>
             </section>
 
+            <section class="screenshots">
+                <div class="tabs">
+                    <button class="tab-link active" onclick="showTab('home', this)">Home</button>
+                    <button class="tab-link" onclick="showTab('projects', this)">Projects</button>
+                    <button class="tab-link" onclick="showTab('usage', this)">Usage</button>
+                    <button class="tab-link" onclick="showTab('vibe', this)">Vibe</button>
+                    <button class="tab-link" onclick="showTab('mcp', this)">MCP</button>
+                </div>
+                <div id="tab-content" class="tab-content">
+                    <img id="screenshot-image" src="images/home.png" alt="ccgui screenshot">
+                </div>
+            </section>
+
         </main>
 
         <footer class="footer">
@@ -225,6 +283,22 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();
+
+        const images = {
+            home: 'images/home.png',
+            projects: 'images/projects.png',
+            usage: 'images/usage.png',
+            vibe: 'images/vibe.png',
+            mcp: 'images/mcp.png'
+        };
+
+        function showTab(tabName, element) {
+            document.getElementById('screenshot-image').src = images[tabName];
+
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(tab => tab.classList.remove('active'));
+            element.classList.add('active');
+        }
     </script>
 </body>
 </html>
