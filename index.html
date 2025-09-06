@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ccgui - A GUI for Claude Code</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><circle cx='40' cy='40' r='40' fill='%23D97706' fill-opacity='0.85'/><circle cx='48' cy='40' r='24' fill='%23CC5500' fill-opacity='0.95'/><circle cx='48' cy='40' r='8' fill='%23F4F4F4'/></svg>">
+    <title>Gemini CLI</title>
+    <link rel="icon" href="images/gemini-logo.svg">
     <style>
         :root {
-            --primary-color: #D97706;
-            --secondary-color: #CC5500;
+            --primary-color: #4285F4; /* Google Blue */
+            --secondary-color: #34A853; /* Google Green */
             --text-color: #2c3e50;
             --background-light: #f8f9fa;
             --background-white: #ffffff;
@@ -168,6 +168,31 @@
             margin-bottom: 10px;
         }
 
+        /* Secondary Tool Section */
+        .secondary-tool {
+            padding: 40px 20px;
+            margin-top: 40px;
+            background-color: var(--background-light);
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .secondary-tool h2 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .secondary-tool p {
+            font-size: 1em;
+            color: #555;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+
         /* Screenshots Section */
         .screenshots {
             padding: 40px 20px;
@@ -229,18 +254,6 @@
             animation-delay: 0.8s;
         }
 
-        /* Claude Logo Styles */
-        .claude-logo { position: relative; display: inline-block; }
-        .logo-circle { position: absolute; border-radius: 50%; }
-        .standard .claude-logo { width: 80px; height: 80px; }
-        .standard .logo-circle:nth-child(1) { width: 80px; height: 80px; top: 0; left: 0; background: #D97706; opacity: 0.85; }
-        .standard .logo-circle:nth-child(2) { width: 48px; height: 48px; top: 16px; left: 24px; background: #CC5500; opacity: 0.95; }
-        .standard .logo-circle:nth-child(3) { width: 16px; height: 16px; top: 32px; left: 40px; background: #F4F4F4; }
-        
-        .horizontal-layout .claude-logo { width: 40px; height: 40px; }
-        .horizontal-layout .logo-circle:nth-child(1) { width: 40px; height: 40px; top: 0; left: 0; background: #D97706; opacity: 0.85; }
-        .horizontal-layout .logo-circle:nth-child(2) { width: 24px; height: 24px; top: 8px; left: 12px; background: #CC5500; opacity: 0.95; }
-        .horizontal-layout .logo-circle:nth-child(3) { width: 8px; height: 8px; top: 16px; left: 20px; background: #F4F4F4; }
     </style>
 </head>
 <body>
@@ -248,101 +261,68 @@
     <div class="container">
         <header class="header fade-in">
             <a href="#" class="header-logo">
-                <div class="horizontal-layout">
-                    <div class="claude-logo">
-                        <div class="logo-circle"></div>
-                        <div class="logo-circle"></div>
-                        <div class="logo-circle"></div>
-                    </div>
-                </div>
-                <span class="logo-text">ccgui</span>
+                <img src="images/gemini-logo.svg" alt="Gemini CLI Logo" style="height: 40px;">
+                <span class="logo-text">Gemini CLI</span>
             </a>
         </header>
 
         <main>
             <section class="hero fade-in">
-                <div class="standard">
-                    <div class="claude-logo">
-                        <div class="logo-circle"></div>
-                        <div class="logo-circle"></div>
-                        <div class="logo-circle"></div>
-                    </div>
-                </div>
-                <h1>ccgui</h1>
-                <p>A powerful graphical interface for Claude Code. Manage projects, track usage, and leverage Vibe Coding.</p>
+                <img src="images/gemini-logo.svg" alt="Gemini CLI Logo" style="height: 80px; margin-bottom: 20px;">
+                <h1>Gemini CLI</h1>
+                <p>An open-source AI agent that brings the power of Gemini directly into your terminal.</p>
                 <div class="install-command">
-                    <code><span class="token-command">npm</span> <span class="token-keyword">install -g</span> <span class="token-package">@jun-a/ccgui</span></code>
+                    <code><span class="token-command">npm</span> <span class="token-keyword">install -g</span> <span class="token-package">@google/gemini-cli</span></code>
                 </div>
             </section>
 
             <section class="features fade-in">
                 <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="folder-open"></i></div>
-                    <h3>CC Projects</h3>
-                    <p>Browse and manage Claude Code projects. Start chats from sessions, resume work, and search past sessions.</p>
+                    <div class="feature-icon"><i data-lucide="gift"></i></div>
+                    <h3>Free Tier</h3>
+                    <p>Get started with a generous free tier, offering 60 requests per minute and 1,000 per day.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="line-chart"></i></div>
-                    <h3>Usage Analytics</h3>
-                    <p>Track API usage and costs. Get statistics by day, model, and project.</p>
+                    <div class="feature-icon"><i data-lucide="brain-circuit"></i></div>
+                    <h3>Powerful Model</h3>
+                    <p>Access the power of Gemini 1.5 Pro with a 1 million token context window for complex tasks.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="zap"></i></div>
-                    <h3>CC Vibe Coding</h3>
-                    <p>YOLO mode Spec-Driven Development. Track your project in real-time with an automated workflow.</p>
+                    <div class="feature-icon"><i data-lucide="wrench"></i></div>
+                    <h3>Built-in Tools</h3>
+                    <p>Includes Google Search grounding, file operations, shell commands, and web fetching.</p>
                 </div>
                  <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="server-cog"></i></div>
-                    <h3>MCP Manager</h3>
-                    <p>Manage and configure Model Context Protocol servers. Enhance integration with external tools.</p>
+                    <div class="feature-icon"><i data-lucide="plug"></i></div>
+                    <h3>Extensible</h3>
+                    <p>Integrate with custom tools and services using the Model Context Protocol (MCP).</p>
+                </div>
+            </section>
+
+            <section class="secondary-tool fade-in">
+                <h2>Also check out: ccgui</h2>
+                <p>A powerful graphical interface for Claude Code. Manage projects, track usage, and leverage Vibe Coding.</p>
+                <div class="install-command" style="font-size: 1.2em; max-width: 400px;">
+                    <code><span class="token-command">npm</span> <span class="token-keyword">install -g</span> <span class="token-package">@jun-a/ccgui</span></code>
                 </div>
             </section>
 
             <section class="screenshots fade-in">
-                <div class="tabs">
-                    <button class="tab-link active" onclick="showTab('home', this)">Home</button>
-                    <button class="tab-link" onclick="showTab('projects', this)">Projects</button>
-                    <button class="tab-link" onclick="showTab('usage', this)">Usage</button>
-                    <button class="tab-link" onclick="showTab('vibe', this)">Vibe</button>
-                    <button class="tab-link" onclick="showTab('mcp', this)">MCP</button>
-                </div>
+                <h2>See it in Action</h2>
                 <div id="tab-content" class="tab-content">
-                    <img id="screenshot-image" src="images/home.png" alt="ccgui screenshot">
+                    <img id="screenshot-image" src="images/gemini-cli.png" alt="Gemini CLI screenshot">
                 </div>
             </section>
 
         </main>
 
         <footer class="footer fade-in">
-            <p>&copy; 2025 ccgui Developers. Licensed under the MIT License.</p>
+            <p>&copy; 2025 Gemini CLI Developers. Licensed under the Apache 2.0 License.</p>
         </footer>
     </div>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();
-
-        const images = {
-            home: 'images/home.png',
-            projects: 'images/projects.png',
-            usage: 'images/usage.png',
-            vibe: 'images/vibe.png',
-            mcp: 'images/mcp.png'
-        };
-
-        function showTab(tabName, element) {
-            const imageElement = document.getElementById('screenshot-image');
-            
-            imageElement.style.opacity = 0;
-
-            setTimeout(() => {
-                imageElement.src = images[tabName];
-                imageElement.style.opacity = 1;
-            }, 400);
-
-            const tabLinks = document.querySelectorAll('.tab-link');
-            tabLinks.forEach(tab => tab.classList.remove('active'));
-            element.classList.add('active');
-        }
     </script>
 </body>
 </html>
